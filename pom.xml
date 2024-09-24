@@ -13,11 +13,13 @@
   <name>Tahopen Community Edition Project: ${project.artifactId}</name>
   <description>A flexible metadata, data and configuration information store</description>
   <url>http://www.tahopen.org</url>
+  <!--
   <scm>
     <connection>scm:git:git@github.com:pentaho/${project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:pentaho/${project.artifactId}.git</developerConnection>
     <url>scm:git:git@github.com:pentaho/${project.artifactId}.git</url>
   </scm>
+  -->
   <properties>
     <mockito-all.version>1.8.4</mockito-all.version>
     <junit.version>4.7</junit.version>
@@ -68,37 +70,11 @@
 
 
   <repositories>
-  <!--
-    <repository>
-      <id>pentaho-public</id>
-      <name>Pentaho Public</name>
-      <url>https://repo.orl.eng.hitachivantara.com/artifactory/pnt-mvn/</url>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>interval:15</updatePolicy>
-      </snapshots>
-    </repository>
-    -->
+ 
   </repositories>
 
   <pluginRepositories>
-  <!--
-    <pluginRepository>
-      <id>pentaho-public-plugins</id>
-      <name>Pentaho Public Plugins</name>
-      <url>https://repo.orl.eng.hitachivantara.com/artifactory/pnt-mvn/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-    </pluginRepository>
-    -->
+ 
   </pluginRepositories>
 
 
