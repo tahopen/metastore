@@ -5,21 +5,38 @@
   <parent>
     <groupId>org.tahopen</groupId>
     <artifactId>tahopen-ce-jar-parent-pom</artifactId>
-    <version>0.1.0.0-SNAPSHOT</version>
+    <version>0.1.0.0</version>
   </parent>
   <groupId>org.tahopen</groupId>
   <artifactId>metastore</artifactId>
-  <version>0.1.0.0-SNAPSHOT</version>
+  <version>0.1.0.0</version>
   <name>Tahopen Community Edition Project: ${project.artifactId}</name>
   <description>A flexible metadata, data and configuration information store</description>
   <url>http://www.tahopen.org</url>
-  <!--
+
   <scm>
-    <connection>scm:git:git@github.com:pentaho/${project.artifactId}.git</connection>
-    <developerConnection>scm:git:git@github.com:pentaho/${project.artifactId}.git</developerConnection>
-    <url>scm:git:git@github.com:pentaho/${project.artifactId}.git</url>
-  </scm>
-  -->
+    <connection>scm:git:git://github.com/tahopen/metastore.git</connection>
+    <developerConnection>scm:git:git@github.com:tahopen/metastore.git</developerConnection>
+    <url>https://github.com/tahopen/metastore</url>
+  </scm>  
+
+  <developers>
+    <developer>
+      <id>marciojv</id>
+      <name>Marcio Junior Vieira</name>
+      <email>marcio@tahopen.org</email>
+    </developer>
+  </developers>  
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License, Version 2.1</name>
+      <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+
   <properties>
     <mockito-all.version>1.8.4</mockito-all.version>
     <junit.version>4.7</junit.version>
@@ -52,28 +69,64 @@
       <version>${commons-io.version}</version>
     </dependency>
   </dependencies>
-  <build>
+
+ <build>
     <plugins>
+       
+ <!-- Generate java docs -->
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <goals>
-              <goal>test-jar</goal>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
+
+      <!-- sign key gpg--> 
+<!--      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>deploy</phase>         
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
+      <!-- publish to Maven Central --> 
+      <plugin>
+         <groupId>org.sonatype.central</groupId>
+         <artifactId>central-publishing-maven-plugin</artifactId>
+         <version>0.6.0</version>
+         <extensions>true</extensions>
+         <configuration>
+           <publishingServerId>maven-central-snapshots</publishingServerId>
+         </configuration>
+      </plugin>          
     </plugins>
+
   </build>
 
-  <repositories>
- 
-  </repositories>
-
-  <pluginRepositories>
- 
-  </pluginRepositories>
-
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>    
+  </distributionManagement>
 </project>
